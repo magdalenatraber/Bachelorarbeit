@@ -1,0 +1,365 @@
+%%%% Time-stamp: <2013-09-18 19:27:11 vk>
+%% ========================================================================
+%%%% Disclaimer
+%% ========================================================================
+%%
+%% created by
+%%
+%%      Karl Voit
+%%
+
+%% ========================================================================
+%%%% Basic settings
+%% ========================================================================
+%% (idea of using newcommands for basic documentclass settings from: Thomas Schlager)
+
+\newcommand{\mypapersize}{A4}
+%% e.g., "A4", "letter", "legal", "executive", ...
+%% The size of the paper of the resulting PDF file.
+
+\newcommand{\mylaterality}{twoside}
+%% "oneside" or "twoside"
+%% Either you are creating a document which is printed on both, left pages
+%% and right pages (twoside) or you create a document which is printed
+%% on right pages only (oneside).
+
+\newcommand{\mydraft}{false}
+%% "true" or "false"
+%% Use draft mode? If true, included graphics are replaced by empty
+%% rectangles (of same size) and overfull boxes (in margin space) are
+%% marked with black box (-> easy to spot!)
+
+\newcommand{\myparskip}{half}
+%% e.g., "no", "full", "half", ...
+%% How to separate paragraphs: indention ("no") or spacing ("half",
+%% "full", ...).
+
+\newcommand{\myBCOR}{0mm}
+%% Inner binding correction. This value depends on the method which is
+%% being used to bind your printed result. Some techniques do not
+%% require a binding correction at all ("0mm"), other require for
+%% example "5mm". Refer to KOMA script documentation for a detailed
+%% explanation what a binding correction is and how to measure it.
+
+\newcommand{\myfontsize}{12pt}   
+%% e.g., 10pt, 11pt, 12pt
+%% The font size of the main text in pt (points).
+
+\newcommand{\mylinespread}{1.0} 
+%% e.g., 1.0, 1.5, 2.0
+%% Line spacing in %/100. For example 1.5 means 150% of the usual line
+%% spacing. Please use with caution: 100% ("1.0") is fine because the
+%% font was designed for it.
+
+\newcommand{\mylanguage}{american,ngerman}
+%% "english,ngerman", "ngerman,english", ...
+%% NOTE: The *last* language is the active one!
+%% See babel documentation for further details.
+
+%% BibLaTeX-settings: (see biblatex reference for further description)
+\newcommand{\mybiblatexstyle}{authoryear}
+%% e.g., "alphabetic", "authoryear", ...
+%% The biblatex style which is being used for referencing. See
+%% biblatex documentation for further details and more values.
+%%
+%% CAUTION: if you change the style, please check for (in)compatible
+%%          "biblatex" package options in the file
+%%          "template/preamble.tex"! For example: "alphabetic" does
+%%          not have an option "dashed=..." and causes an error if it
+%%          does not get removed from the list of options.
+
+\newcommand{\mybiblatexdashed}{false}  %% "true" or "false"
+%% If true: replace recurring reference authors with a dash.
+
+\newcommand{\mybiblatexbackref}{true}  %% "true" or "false"
+%% If true: create backward links from reference to citations.
+
+\newcommand{\mybiblatexfile}{references-biblatex.bib}
+%% Name of the biblatex file that holds the references.
+
+\newcommand{\mydispositioncolor}{0,0,0}
+%% e.g., "30,103,182" (blue/turquois), "0,0,0" (black), ...
+%% Color of the headings and so forth in RGB (red,green,blue) values.
+%% NOTE: if you are using "0,0,0" for black, printers might still
+%%       recognize pages as color pages. In case this is a problem
+%%       (paying for color print-outs vs. paying for b/w-printouts)
+%%       please edit file "template/preamble.tex" and change
+%%       "\definecolor{DispositionColor}{RGB}{\mydispositioncolor}"
+%%       to "\definecolor{DispositionColor}{gray}{0}" and thus
+%%       overwriting the value of \mydispositioncolor above.
+
+\newcommand{\mycolorlinks}{true}  %% "true" or "false"
+%% Enables or disables colored links (hyperref package).
+
+\newcommand{\mytitlepage}{template/title_Thesis_TU_Graz}
+%% Your own or one of following pre-defined title pages:
+%% "template/title_plain_maketitle": simple maketitle page
+%% "template/title_Diplomarbeit_KF_Uni_Graz.tex": fancy (german) title page for KF Uni Graz
+%% "template/title_Thesis_TU_Graz": titlepage for Graz University of Technology (correct Corporate Design)
+%% "template/title_VWA": titlepage for Vorwissenschaftliche Arbeit
+
+\newcommand{\mytodonotesoptions}{}
+%% e.g., "" (empty), "disable", ...
+%% Options for the todonotes-package. If "disable", all todonotes will
+%% be hidden (including listoftodos).
+
+%% Load main settings for document preamble:
+\input{template/preamble}%% DO NOT REMOVE THIS LINE!
+
+\setboolean{myaddcolophon}{true}  %% "true" or "false"
+%% If set to "true": a colophon (with notes about this document
+%% template, LaTeX, ...) is added after the title page.
+%% Please do not set to "false" without a good reason. The colophon
+%% helps your readers to get in touch with LaTeX and to find this template.
+
+\setboolean{myaddlistoftodos}{false}  %% "true" or "false"
+%% If set to "true": the current list of open todos is added after the
+%% table of contents. If \mytodonotesoptions is set to "disable", no
+%% list of todos is added, independent of this setting here.
+
+
+
+%% ========================================================================
+%%%% Document metadata
+%% ========================================================================
+
+%% general metadata:
+\newcommand{\myauthor}{Magdalena Traber}  %% also used for PDF metadata (hyperref)
+\newcommand{\mytitle}{Synthese, Charakterisierung und sensorische Eigenschaften von Metallkomplexen mit Benzoporphyrinen}  %% also used for PDF metadata (hyperref)
+\newcommand{\mysubject}{SUBJECT}  %% also used for PDF metadata (hyperref)
+\newcommand{\mykeywords}{KEYWORDS}  %% also used for PDF metadata (hyperref)
+
+%% this information is used only for generating the title page:
+\newcommand{\myworktitle}{Bachelorarbeit}  %% official type of work like ``Master theses''
+\newcommand{\mygrade}{Bachelor of Science} %% title you are getting with this work like ``Master of ...''
+\newcommand{\mystudy}{Chemie} %% your study like ``Arts''
+\newcommand{\myuniversity}{Technische Universität Graz} %% your university/school
+\newcommand{\myinstitute}{Institut für Analytische Chemie und Lebensmittelchemie} %% affiliation
+\newcommand{\myinstitutehead}{Univ.-Prof. Dipl.-Chem. Dr.rer.nat. Ingo Klimant} %% head of institute
+\newcommand{\mysupervisor}{Sergey Borisov} %% your supervisor
+\newcommand{\myevaluator}{Univ.-Prof. Dipl.-Chem. Dr.rer.nat. Ingo Klimant} %% your evaluator
+\newcommand{\myhomestreet}{Adolf-Kolping-Gasse 6} %% your home street (with house number)
+\newcommand{\myhometown}{Graz} %% your home town
+\newcommand{\myhomepostalnumber}{8010} %% your postal number of home town
+\newcommand{\mysubmissionmonth}{Juni} %% month you are handing in
+\newcommand{\mysubmissionyear}{2014} %% year you are handing in
+\newcommand{\mysubmissiontown}{\myhometown} %% town of handing in (or \myhometown)
+
+%% additional information for generic_documentation title page
+\newcommand{\myid}{1010067} %% Matrikelnummer
+\newcommand{\mylecture}{LECTURE} %% 
+
+
+%% ========================================================================
+%%%% MISC command definitions
+%% ========================================================================
+\input{template/mycommands}
+
+%% ========================================================================
+%%%% Typographic settings
+%% ========================================================================
+\input{template/typographic_settings}
+
+
+%% ========================================================================
+%%%% MISC usepackages
+%% ========================================================================
+
+%% ... it's OK to put here your own usepackage commands ...
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{capt-of}
+\usepackage{mhchem}
+
+%% ========================================================================
+%%%% MISC self-defined commands and settings
+%% ========================================================================
+
+%% ... it's OK to put here your own newcommand/newenvironment-definitions ...
+
+
+
+
+\newcommand{\myLaT}{\LaTeX{}@TUG\xspace} %% LaTeX@TUG text "logo"
+
+\hyphenation{ex-am-ple hy-phen-ate}  %% in order to use German umlauts
+%% here (Ver-\"of-fent-li-chung), you have to check for 
+%% activated \usepackage[T1]{fontenc} in the preamble
+
+%% override default language of babel: (be sure to know, what you're
+%% doing here)
+%\selectlanguage{american}
+%\selectlanguage{ngerman}
+
+%% ========================================================================
+%%%% Templates
+%% ========================================================================
+
+%% template for inserting figures:
+% \myfig{}%% filename
+%       {}%% width/height
+%       {}%% caption
+%       {}%% optional (short) caption for list of figures
+%       {fig:}%% label
+
+%% acronyms in small caps: \myacro{UNESCO}
+
+
+\input{template/pdf_settings}  %% should be *last* definitions in preamble!
+%% ========================================================================
+%%%% begin{document}
+%% ========================================================================
+\begin{document}
+
+\frontmatter                    %% KOMA: roman page numbers and such; only available in scrbook
+
+\input{colophon}                %% defines information about editor, LaTeX, font, ...
+
+%% Choose your desired title page:
+\input{\mytitlepage}            %% include title page
+
+
+\input{template/declaration_TU_Graz}  %% Statutory Declaration
+% \input{thanks}                %% this is a suggestion: you have to create this file on demand
+% \input{foreword}              %% this is a suggestion: you have to create this file on demand
+
+
+%% include the abstract without chapter number but include it on table of contents:
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Abstract}
+\include{abstract}              %% Abstract
+
+
+\tableofcontents                %% this produces the table of contents - you might have guessed :-)
+
+\listoffigures
+
+%% if myaddlistoftodos is set to "true", the current list of open todos is added:
+\ifthenelse{\boolean{myaddlistoftodos}}{
+  \newpage\listoftodos          %% handy if you are using todonotes with \todo{}
+}{}                             %% with todonotes-package option "disable" you can get rid of any todo in the output
+
+\mainmatter                     %% KOMA: marks main part using arabic page numbers and such; only available in scrbook
+\part{Theorie}
+\chapter{Einleitung}
+\input{einleitung}
+\chapter{Lumineszenz}
+\input{lumi}
+\chapter{Sensoren}
+\input{optsensor}
+\chapter{Porphyrine}
+\input{porphyrine}
+\chapter{Schollreaktion}
+\input{scholl}
+\part{Praktischer Teil}
+\chapter{Durchführung}
+\input{prakt}
+\chapter{Ergebnisse und Diskussion}
+\input{discuss}
+\chapter{Zusammenfassung}
+\input{Zusammenfassung}
+%% include tex file chapters:
+% \include{introduction}        %% this is a suggestion: you have to create this file on demand
+% \include{problem}             %% this is a suggestion: you have to create this file on demand
+% \include{solution}            %% this is a suggestion: you have to create this file on demand
+% \include{evaluation}          %% this is a suggestion: you have to create this file on demand
+% \include{outlook}             %% this is a suggestion: you have to create this file on demand
+
+\appendix                       %% closes main document, appendix follows until end; only available in book-classes
+\addpart*{Appendix}             %% adding Appendix to tableofcontents
+\begin{thebibliography}{99}
+\bibitem{arten}
+Wöhrle,D.;Tausch, M. W.; Stohrer,W. D.; \emph{Photochemie}, Wiley-VCh, 1998
+\bibitem{Hesse}
+Hesse, M.; Meier, H.; Zeeh, B.,
+\emph{Spektroskopische Methoden in der organischen Chemie},
+Georg Thieme Verlag, 2005, D-70469 Stuttgart
+\bibitem{jab}
+\emph{Charge-Transfer-Prozesse (Chemie)} \url{http://marjorie-wiki.de/wiki/Charge-Transfer-Prozesse_(Chemie)} ;(16.05.2014, 09:47 Uhr)
+\bibitem{Valeur}
+Valeur, B.,
+\emph{Molecular Fluorescence}
+WILEY-VCH Verlag GmbH, 2002, Weinheim
+\bibitem{Schwedt}
+Schwedt, G.,
+\emph{Analytische Chemie; Grundlagen, Methoden und Praxis}
+WILEY-VCH Verlag GmbH, 2008, Weinheim
+\bibitem{Mills}
+Mills,A.; Graham,A.
+\emph{Extruded polymer films pigmented with a heterogeneous ion-pair based lumophore for O2 sensing}
+Analyst, 2013,138, 6488-6493
+\bibitem{Borisov}
+Borisov, S.M.; Nuss,G.; Klimant, I.
+\emph{Red Light-Excitable Oxygen Sensing Materials
+Based on Platinum(II) and Palladium(II)
+Benzoporphyrins}
+Anal. Chem. 2008, 80, 9435–9442
+\bibitem{optsensor}
+Tengberg,A.;Hovdenes, J.; Barranger, D.; Brocandel, O.; Diaz, R.; Sarkkula, J.; Huber, C.; Stangelmayer, A.;
+\emph{Optodes to Measure Oxygen in the
+Aquatic Environment}, \url{www2.mbari.org/~coletti/dropbox/Optode/Sea_Tecnology_Feb_2003_Optodes.pdf}; (24.03.2014; 15:27 Uhr)
+\bibitem{biochemie}
+Buddecke, E
+\emph{Grundriß der Biochemie: Für Studierende der Medizin, Zahnmedizin und Naturwissenschaften}
+de Gruyter, 1994
+\bibitem{arylethinylporphyrine}
+Goldberg, P.K.; Pundsack, T.J.; Splan, K.E.
+\emph{Photophysical Investigation of Neutral and Diprotonated Free-Base
+Bis(Arylethynyl)porphyrins}
+J. Phys. Chem. A 2011, 115, 10452–10460
+\bibitem{Finikova}
+Finikova, O.S.; Cheprakov, A.V.; Carroll, P.J.; Vinogradov; S.A.
+\emph{Novel Route to Functionalized
+Tetraaryltetra[2,3]naphthaloporphyrins via
+Oxidative Aromatization}
+J. Org. Chem. 2003, 68, 7517-7520
+\bibitem{tsuda}
+Tsuda, A.; Osuka, A.,
+\emph{Discrete Conjugated Porphyrin Tapes
+with an Exceptionally Small Bandgap}
+Adv. Mater. 2002, 14, No. 1, January 4
+\bibitem{schollallg.}
+\emph{Scholl-Reaktion}
+\url http://www.internetchemie.info/chemiewiki/index.php?title=Scholl-Reaktion (24.03.2014, 16:28)
+\bibitem{Rempala}
+Rempala; P.; Kroulik,J.; King, B.
+\emph{Investigation of the Mechanism of the Intramolecular Scholl
+Reaction of Contiguous Phenylbenzenes}
+J. Org. Chem. 2006, 71, 5067-5081
+\bibitem{MoCl5}
+Waldvogel, S.R.; Trosien, S.,
+\emph{Oxidative transformation of aryls using molybdenum pentachloride}
+Chem. Commun., 2012, 48, 9109–9119
+\bibitem{Lu and Moore}
+Lu, Y.; Moore, J.
+\emph{Semi-fused hexaphenyl hexa-peri-hexabenzocoronene: a novel fluorophore
+from an intramolecular Scholl reaction}
+Tetrahedron Letters 2009, 50, 4071–4077
+\bibitem{Shen}
+Shen, Z.; Uno, H.; Shimizu, Y.; Ono, N.;
+\emph{Controlling conformations and physical properties of
+meso-tetrakis(phenylethynyl)porphyrins by ring fusion: synthesis,
+properties and structural characterizations}
+Org.Biomol.Chem.;2004,2, 3442-3447
+
+
+\end{thebibliography}
+\printbibliography              %% remove, if using BibTeX instead of biblatex
+% \include{further_ressources}  %% this is a suggestion: you have to create this file on demand
+
+
+
+
+
+
+%%%% end{document}
+\end{document}
+%% vim:foldmethod=expr
+%% vim:fde=getline(v\:lnum)=~'^%%%%\ .\\+'?'>1'\:'='
+%%% Local Variables:
+%%% mode: latex
+%%% mode: auto-fill
+%%% mode: flyspell
+%%% eval: (ispell-change-dictionary "en_US")
+%%% TeX-master: "main"
+%%% End:
